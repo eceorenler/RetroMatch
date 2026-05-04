@@ -33,6 +33,28 @@ class Board:
         self.grid[r2][c2].row, self.grid[r2][c2].col = r2,c2
 
         #update the position of the tiles
-        self.grid[r1][c1].update_position()
-        self.grid[r2][c2].update_position()
+        self.grid[r1][c1].updatePosition()
+        self.grid[r2][c2].updatePosition()
 
+
+    def findMatches(self):
+        matched = set()
+
+        # Check rows for matches
+        for row in range(settings.GRID_ROWS):
+            for col in range(settings.GRID_COLS-2):
+                if self.grid[row][col].type == self.grid[row][col+1].type == self.grid[row][col+2].type:
+                    matched.add((row, col))
+                    matched.add((row, col+1))
+                    matched.add((row, col+2))
+
+        for row in range(settings.GRID_ROWS - 2):
+            for col in range(settings.GRID_COLS):
+                if self.grid[row][col].type == self.grid[row+1][col].type == self.grid[row+2][col].type:
+                    matched.add((row, col))
+                    matched.add((row+1, col))
+                    matched.add((row+2, col))
+
+        return matched
+
+#to be continued

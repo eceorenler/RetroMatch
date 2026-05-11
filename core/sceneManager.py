@@ -41,7 +41,7 @@ class SceneManager:
                     self.currentScene = None
             
             if self.currentScene:
-                self.currentScene.process_input(events, pressedKeys)
+                self.currentScene.processInput(events, pressedKeys)
                 self.currentScene.update()
                 self.currentScene.render(screen)
 

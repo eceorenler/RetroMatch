@@ -40,7 +40,7 @@ class Board:
     def findMatches(self):
         matched = set()
 
-        # Check rows for matches
+        #check rows for matches
         for row in range(settings.GRID_ROWS):
             for col in range(settings.GRID_COLS-2):
                 if self.grid[row][col].type == self.grid[row][col+1].type == self.grid[row][col+2].type:
@@ -57,4 +57,30 @@ class Board:
 
         return matched
 
-#to be continued
+    def popMatches(self, matched):
+        for row, col in matched:
+            self.grid[row][col] = Tile(random.randint(0, settings.TILE_TYPES-1), row, col)
+        self.score += len(matched) * settings.MATCH_POINTS
+
+    def handleClick(self, row, col):
+        if self.selected is None:
+            self.selected = (row, col)
+        else:
+            r1, c1 = self.selected
+
+            if abs(r1-row) + abs(c1-col) == 1: #adjacency check
+                self.swap(r1, c1, row, col)
+                matched = self.findMatches()
+                if matched:
+                    self.popMatches(matched)
+                else:
+                    self.swap(r1, c1, row, col) #swap back if no match
+            self.selected = None
+
+
+    def draw(self, screen, images):
+        for row in self.grid:
+            for tile in row:
+                if self.selected == (tile.row, tile.col):
+                    pygame.draw.rect(screen, settings.GB_LIGHTEST, tile.rect, 3) #highlight selected tile
+                tile.draw(screen, images[tile.type])

@@ -5,15 +5,28 @@ from core.sceneManager import SceneBase
 class MenuScene(SceneBase):
     def __init__(self):
         super().__init__()
-        self.font_big = pygame.font.Font("assets/fonts/Press_Start_2P/PressStart2P-Regular.ttf", 72)
-        self.font_small = pygame.font.Font("assets/fonts/Press_Start_2P/PressStart2P-Regular.ttf", 16)
+        self.font_big = pygame.font.Font("assets/fonts/Press_Start_2P/PressStart2P-Regular.ttf", 48)
+        self.font_small = pygame.font.Font("assets/fonts/Press_Start_2P/PressStart2P-Regular.ttf", 12)
 
-    def process_input(self, events, pressedKeys):
+        self.menuMusic = pygame.mixer.Sound("assets/sounds/menu.mp3")
+        self.menuMusic.play()
+
+        self.aliens = []
+
+        for i in range(5):
+            img = pygame.image.load(f"assets/sprites/alien{i+1}.png")
+            img = pygame.transform.scale(img, (40, 40))
+            self.aliens.append(img)
+
+    def processInput(self, events, pressedKeys):
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     from scenes.gameScene import GameScene
                     self.switchToScene(GameScene())
+
+                if event.key == pygame.K_ESCAPE:
+                    self.terminate()
 
     def update(self):
         pass
@@ -23,9 +36,18 @@ class MenuScene(SceneBase):
 
         title1 = self.font_big.render("RETRO", True, settings.GB_LIGHTEST)
         title2 = self.font_big.render("MATCH", True, settings.GB_LIGHTEST)
-        instr = self.font_small.render("Press ENTER to play", True, settings.GB_LIGHT)
+        playText = self.font_small.render("PRESS ENTER TO PLAY", True, settings.GB_LIGHT)
+        quitText = self.font_small.render("ESC TO QUIT", True, settings.GB_LIGHT)
 
-        #center the text
-        screen.blit(title1, (settings.WINDOW_WIDTH // 2 - title1.get_width() // 2, 250))
-        screen.blit(title2, (settings.WINDOW_WIDTH // 2 - title2.get_width() // 2, 320))
-        screen.blit(instr, (settings.WINDOW_WIDTH // 2 - instr.get_width() // 2, 500))
+        screen.blit(self.aliens[0], (35, 70))
+        screen.blit(self.aliens[1], (315, 95))
+        screen.blit(self.aliens[2], (360, 250))
+        screen.blit(self.aliens[3], (55, 470))
+        screen.blit(self.aliens[4], (300, 575))
+
+    
+
+        screen.blit(title1, (settings.WINDOW_WIDTH // 2 - title1.get_width() // 2, 230))
+        screen.blit(title2, (settings.WINDOW_WIDTH // 2 - title2.get_width() // 2, 295))
+        screen.blit(playText, (settings.WINDOW_WIDTH // 2 - playText.get_width() // 2, 430))
+        screen.blit(quitText, (settings.WINDOW_WIDTH // 2 - quitText.get_width() // 2, 490))

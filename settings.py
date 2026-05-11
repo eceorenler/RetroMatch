@@ -5,10 +5,16 @@ FPS   = 60
 TITLE = "Retro Match"
 
 # Color Palette
-GB_DARKEST  = (15,  56,  15)
-GB_DARK     = (48,  98,  48)
-GB_LIGHT    = (139, 172, 15)
-GB_LIGHTEST = (155, 188, 15) 
+GB_DARKEST  = (27, 28, 36)
+GB_DARK     = (31, 32, 41)
+GB_LIGHT    = (97, 98, 107)
+GB_LIGHTEST = (199, 192, 177) 
+
+ALIEN_RED = (207, 32, 41)
+ALIEN_GREEN = (41, 205, 87)
+ALIEN_YELLOW = (226, 224, 62)
+ALIEN_BLUE = (60, 79, 220)
+ALIEN_PINK = (203, 67, 208)
 
 #BlackScreen
 SCREEN_X = 87
@@ -29,6 +35,8 @@ GRID_X = 98
 GRID_Y = 242
 
 #Game duration and scoring
-GAME_DURATION = 60 
+GAME_DURATION = 60
 WIN_SCORE     = 1000
-MATCH_POINTS  = 100 
+MATCH_POINTS  = 10
+
+POP_ANIMATION_SPEED = 1

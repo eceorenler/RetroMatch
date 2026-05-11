@@ -85,6 +85,9 @@ class Board: #main class that manages the game board
 
     def update(self): #updates the board in every frame
 
+        if self.shuffleFlash > 0:
+            self.shuffleFlash -= 1
+
         if self.isAnimating:
             allFinished = True #flag for checking if all popping animations are finished
 

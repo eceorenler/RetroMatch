@@ -48,7 +48,7 @@ python main.py
 - The game lasts for 60 seconds
 - Try to achive the highest score possible before time is up.
 
-- 
+
 ### Controls
 
 | Input | Action |

@@ -1,10 +1,10 @@
-#Window
+#window
 WINDOW_WIDTH  = 432
 WINDOW_HEIGHT = 768
 FPS   = 60
 TITLE = "Retro Match"
 
-# Color Palette
+#color palette
 GB_DARKEST  = (27, 28, 36)
 GB_DARK     = (31, 32, 41)
 GB_LIGHT    = (97, 98, 107)
@@ -16,27 +16,27 @@ ALIEN_YELLOW = (226, 224, 62)
 ALIEN_BLUE = (60, 79, 220)
 ALIEN_PINK = (203, 67, 208)
 
-#BlackScreen
+#grid
 SCREEN_X = 87
 SCREEN_Y = 237
 SCREEN_W = 255
 SCREEN_H = 249
 
-#Grid
 GRID_COLS  = 5
 GRID_ROWS  = 5
-TILE_TYPES = 5
-
-TILE_SIZE = 40
-
-SPACING = 8
-
 GRID_X = 98
 GRID_Y = 242
 
-#Game duration and scoring
-GAME_DURATION = 60
-WIN_SCORE     = 1000
-MATCH_POINTS  = 10
+#tiles
+TILE_TYPES = 5
+TILE_SIZE = 40
+SPACING = 8
 
+
+#game duration and scoring
+GAME_DURATION = 60
+MATCH_POINTS  = 10 #points awarded for each tile in a match
+
+#animation
 POP_ANIMATION_SPEED = 1
+POP_ANIMATION_DURATION = 20
